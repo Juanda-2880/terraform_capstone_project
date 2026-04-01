@@ -96,3 +96,14 @@ data "aws_iam_policy_document" "managed_policy" {
     resources = ["*"]
   }
 }
+
+resource "aws_iam_policy_attachment" "SSM_Policy_Attachment" {
+    name = "SSM_Policy_Attachment"
+    policy_arn = aws_iam_policy_document.managed_policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "policy_attachment" {
+    role = aws_iam_role.SSM.name
+    policy_arn = aws_iam_policy_document.managed_policy.json
+  
+}
