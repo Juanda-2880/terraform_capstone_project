@@ -43,6 +43,12 @@ resource "aws_route_table" "Private_RT_1" {
   
 }
 
+resource "aws_route_table_association" "private_subnet1" {
+  depends_on     = [aws_subnet.Private_Subnet1]
+  route_table_id = aws_route_table.Private_RT_1.id
+  subnet_id      = aws_subnet.Private_Subnet1.id
+}
+
 resource "aws_route_table" "Private_RT_2" {
     vpc_id = aws_vpc.custom_vpc.id
     route {
@@ -58,4 +64,10 @@ resource "aws_route_table" "Private_RT_2" {
     Description = "Route Table for private subnet 2 in Project1"
   }
   
+}
+
+resource "aws_route_table_association" "private_subnet2" {
+  depends_on     = [aws_subnet.Private_Subnet2]
+  route_table_id = aws_route_table.Private_RT_2.id
+  subnet_id      = aws_subnet.Private_Subnet2.id
 }
