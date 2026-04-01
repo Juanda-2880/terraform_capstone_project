@@ -33,3 +33,8 @@ variable "zones2" {
     type        = string
     default     = "us-east-1b"
 }
+
+variable "vpc_id" {
+  description = "VPC ID where subnets are created"
+  type        = string
+}

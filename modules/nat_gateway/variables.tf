@@ -9,3 +9,23 @@ variable "availability_zone2" {
     type        = string
     default     = "us-east-1b"
 }
+
+variable "eip1_id" {
+  description = "Elastic IP allocation id for NATGW1"
+  type        = string
+}
+
+variable "eip2_id" {
+  description = "Elastic IP allocation id for NATGW2"
+  type        = string
+}
+
+variable "public_subnet1_id" {
+  description = "Subnet ID for NATGW1"
+  type        = string
+}
+
+variable "public_subnet2_id" {
+  description = "Subnet ID for NATGW2"
+  type        = string
+}

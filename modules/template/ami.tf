@@ -5,8 +5,8 @@ data "aws_ami" "my_ami" {
     values = ["amzn2-ami-hvm*"]
   }
   filter {
-    name = "root-devices-type"
-    values = [ "ebs" ]
+    name = "root-device-type"
+    values = ["ebs"]
   }
   filter {
     name   = "virtualization-type"

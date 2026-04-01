@@ -10,7 +10,7 @@ resource "aws_launch_template" "WebLT" {
     }
 
     iam_instance_profile {
-        name = aws_iam_instance_profile.LT_Profile.name
+        name = var.instance_profile_name
     }
     image_id = data.aws_ami.my_ami.id
     instance_type = var.instance_type
@@ -19,14 +19,13 @@ resource "aws_launch_template" "WebLT" {
       enabled = true
     }
 
-    vpc_security_group_ids = [aws_vpc_security_group.WebSG.id]
+    vpc_security_group_ids = [var.web_sg_id]
 
     tag_specifications {
       resource_type = "instance"
-    }
-
-    tags = {
-      Name = "Web_App_Tier"
+      tags = {
+        Name = "Web_App_Tier"
+      }
     }
 
     user_data = filebase64("${path.module}/userdata.sh")
